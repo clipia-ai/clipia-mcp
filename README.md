@@ -4,7 +4,7 @@
 
 **Generate AI images & video inside Claude, Cursor, ChatGPT — 20+ models in one MCP endpoint.**
 
-[![npm clipia](https://img.shields.io/npm/v/clipia?label=npm%20%40clipia%2Fclient&logo=npm)](https://www.npmjs.com/package/clipia)
+[![npm clipia-ai](https://img.shields.io/npm/v/clipia-ai?label=npm%20clipia-ai&logo=npm)](https://www.npmjs.com/package/clipia-ai)
 [![PyPI clipia](https://img.shields.io/pypi/v/clipia?label=PyPI%20clipia&logo=pypi&logoColor=white)](https://pypi.org/project/clipia/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![MCP](https://img.shields.io/badge/Model%20Context%20Protocol-Streamable%20HTTP-7c5cff)](https://modelcontextprotocol.io)
@@ -229,7 +229,7 @@ The server exposes **8 tools to the agent** (plus one app-only helper). Compact 
 
 Prefer calling Clipia from your own code instead of an agent? Use the official SDKs against the same public API (fal.ai-style `submit → status → result` queue, credits-based billing):
 
-- **TypeScript / Node:** [`clipia`](https://www.npmjs.com/package/clipia) — `npm install clipia` (also ships a `clipia` CLI).
+- **TypeScript / Node:** [`clipia-ai`](https://www.npmjs.com/package/clipia-ai) — `npm install clipia-ai` (also ships a `clipia` CLI).
 - **Python:** [`clipia`](https://pypi.org/project/clipia/) — `pip install clipia` (sync + async clients).
 
 Both support webhooks with HMAC-SHA256 signature verification and the same `clipia_test_*` sandbox keys.
