@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/icon.png" alt="Clipia" width="96" height="96" />
+</p>
+
 <!-- TODO founder: подтвердить имя репо/org перед публикацией (предполагается clipia-ai/clipia-mcp) -->
 
 # Clipia MCP
