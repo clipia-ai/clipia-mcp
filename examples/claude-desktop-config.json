@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "clipia": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://api.clipia.ai/mcp",
+        "--header",
+        "Authorization: Bearer clipia_live_YOUR_KEY"
+      ]
+    }
+  }
+}

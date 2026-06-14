@@ -1,0 +1,19 @@
+{
+  "servers": {
+    "clipia": {
+      "type": "http",
+      "url": "https://api.clipia.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer ${input:clipia_api_key}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "clipia_api_key",
+      "description": "Clipia API Key",
+      "password": true
+    }
+  ]
+}
