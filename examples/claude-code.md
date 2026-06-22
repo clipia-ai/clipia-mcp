@@ -4,7 +4,7 @@ One command in your terminal. Replace `clipia_live_YOUR_KEY` with a key from
 [clipia.ai/settings](https://clipia.ai/settings) → **API keys**.
 
 ```bash
-claude mcp add --transport http clipia https://api.clipia.ai/mcp \
+claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
   --header "Authorization: Bearer clipia_live_YOUR_KEY"
 ```
 

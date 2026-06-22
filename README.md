@@ -11,7 +11,7 @@
 
 Clipia is an AI image & video generation platform. This is its hosted, remote **Model Context Protocol (MCP)** server: a single endpoint that lets any MCP-capable AI agent generate images and video, poll results, browse models, search prompt templates and read your credit balance — no SDK and no code required.
 
-**Endpoint:** `https://api.clipia.ai/mcp` — stateless **Streamable HTTP**, authenticated with a Clipia API key.
+**Endpoint:** `https://mcp.clipia.ai/mcp` — stateless **Streamable HTTP**, authenticated with a Clipia API key.
 
 ---
 
@@ -20,7 +20,7 @@ Clipia is an AI image & video generation platform. This is its hosted, remote **
 Connect Clipia to Claude Code in one command (replace the placeholder with your key):
 
 ```bash
-claude mcp add --transport http clipia https://api.clipia.ai/mcp \
+claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
   --header "Authorization: Bearer clipia_live_YOUR_KEY"
 ```
 
@@ -34,7 +34,7 @@ Then just ask in the chat: *"Generate a neon city image with Clipia"* — the pr
 
 ## Connect from any client
 
-The endpoint is the same everywhere: `https://api.clipia.ai/mcp`. IDEs and CLIs authenticate with an API key from settings; **claude.ai** and **ChatGPT** connect by signing in to your Clipia account over OAuth (no key needed).
+The endpoint is the same everywhere: `https://mcp.clipia.ai/mcp`. IDEs and CLIs authenticate with an API key from settings; **claude.ai** and **ChatGPT** connect by signing in to your Clipia account over OAuth (no key needed).
 
 Ready-to-paste configs live in [`examples/`](./examples).
 
@@ -54,7 +54,7 @@ Ready-to-paste configs live in [`examples/`](./examples).
 ### Claude Code
 
 ```bash
-claude mcp add --transport http clipia https://api.clipia.ai/mcp \
+claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
   --header "Authorization: Bearer clipia_live_YOUR_KEY"
 ```
 
@@ -70,7 +70,7 @@ Claude Desktop bridges to remote HTTP servers through [`mcp-remote`](https://www
       "args": [
         "-y",
         "mcp-remote",
-        "https://api.clipia.ai/mcp",
+        "https://mcp.clipia.ai/mcp",
         "--header",
         "Authorization: Bearer clipia_live_YOUR_KEY"
       ]
@@ -82,7 +82,7 @@ Claude Desktop bridges to remote HTTP servers through [`mcp-remote`](https://www
 ### claude.ai (web / desktop / mobile)
 
 1. Open **Settings → Connectors**.
-2. Click **Add custom connector** and paste the URL: `https://api.clipia.ai/mcp`
+2. Click **Add custom connector** and paste the URL: `https://mcp.clipia.ai/mcp`
 3. Click **Connect** and sign in to your Clipia account — no key needed (OAuth).
 4. In a new chat, ask for an image or a video: a live Clipia card with progress and the result appears inside the message.
 
@@ -96,7 +96,7 @@ Add to `~/.cursor/mcp.json` (global) or `.cursor/mcp.json` (project), then resta
 {
   "mcpServers": {
     "clipia": {
-      "url": "https://api.clipia.ai/mcp",
+      "url": "https://mcp.clipia.ai/mcp",
       "headers": { "Authorization": "Bearer clipia_live_YOUR_KEY" }
     }
   }
@@ -112,7 +112,7 @@ Create `.vscode/mcp.json` in your workspace (or use the **MCP: Add Server** comm
   "servers": {
     "clipia": {
       "type": "http",
-      "url": "https://api.clipia.ai/mcp",
+      "url": "https://mcp.clipia.ai/mcp",
       "headers": { "Authorization": "Bearer ${input:clipia_api_key}" }
     }
   },
@@ -135,7 +135,7 @@ Cline reads `mcpServers` from its `cline_mcp_settings.json` (MCP Servers → Con
 {
   "mcpServers": {
     "clipia": {
-      "url": "https://api.clipia.ai/mcp",
+      "url": "https://mcp.clipia.ai/mcp",
       "headers": { "Authorization": "Bearer clipia_live_YOUR_KEY" }
     }
   }
@@ -152,7 +152,7 @@ Add to `~/.codeium/windsurf/mcp_config.json` (note the Windsurf-specific `server
 {
   "mcpServers": {
     "clipia": {
-      "serverUrl": "https://api.clipia.ai/mcp",
+      "serverUrl": "https://mcp.clipia.ai/mcp",
       "headers": { "Authorization": "Bearer clipia_live_YOUR_KEY" }
     }
   }
@@ -166,7 +166,7 @@ Add a block to `~/.codex/config.toml` and export the key into your environment �
 ```toml
 # ~/.codex/config.toml
 [mcp_servers.clipia]
-url = "https://api.clipia.ai/mcp"
+url = "https://mcp.clipia.ai/mcp"
 bearer_token_env_var = "CLIPIA_API_KEY"
 
 # in your environment:
@@ -176,7 +176,7 @@ bearer_token_env_var = "CLIPIA_API_KEY"
 ### Gemini CLI
 
 ```bash
-gemini mcp add --transport http clipia https://api.clipia.ai/mcp \
+gemini mcp add --transport http clipia https://mcp.clipia.ai/mcp \
   --header "Authorization: Bearer clipia_live_YOUR_KEY"
 ```
 
@@ -185,7 +185,7 @@ Verify the connection with `gemini mcp list`.
 ### ChatGPT (Developer Mode)
 
 1. In ChatGPT (web): **Settings → Apps & Connectors → Advanced settings** → enable **Developer mode** (Plus, Pro, Business, Enterprise).
-2. Back in **Apps & Connectors → Create**. Name it `Clipia`, MCP Server URL: `https://api.clipia.ai/mcp`.
+2. Back in **Apps & Connectors → Create**. Name it `Clipia`, MCP Server URL: `https://mcp.clipia.ai/mcp`.
 3. Authentication — **OAuth**, tick "I trust this application", click **Create**.
 4. Sign in to your Clipia account in the popup. In a chat press **+ → More → Clipia**, then ask in plain text.
 
@@ -253,7 +253,7 @@ Clipia — российская платформа AI-генерации изо�
 Подключение в одну команду (ключ — в [Настройках → API-ключи](https://clipia.ai/settings)):
 
 ```bash
-claude mcp add --transport http clipia https://api.clipia.ai/mcp \
+claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
   --header "Authorization: Bearer clipia_live_ВАШ_КЛЮЧ"
 ```
 

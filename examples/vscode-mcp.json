@@ -2,7 +2,7 @@
   "servers": {
     "clipia": {
       "type": "http",
-      "url": "https://api.clipia.ai/mcp",
+      "url": "https://mcp.clipia.ai/mcp",
       "headers": {
         "Authorization": "Bearer ${input:clipia_api_key}"
       }

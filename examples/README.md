@@ -1,7 +1,7 @@
 # Clipia MCP — connection examples
 
 Copy-paste configs for each client. Endpoint is always
-`https://api.clipia.ai/mcp`. Replace `clipia_live_YOUR_KEY` with a key from
+`https://mcp.clipia.ai/mcp`. Replace `clipia_live_YOUR_KEY` with a key from
 [clipia.ai/settings](https://clipia.ai/settings) → **API keys**
 (or a `clipia_test_*` sandbox key for no-cost testing).
 

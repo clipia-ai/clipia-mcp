@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "clipia": {
-      "url": "https://api.clipia.ai/mcp",
+      "url": "https://mcp.clipia.ai/mcp",
       "headers": {
         "Authorization": "Bearer clipia_live_YOUR_KEY"
       }

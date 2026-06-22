@@ -6,7 +6,7 @@ You are an AI agent (Cline or similar) installing the **Clipia MCP server** for 
 
 - **Server name:** `clipia`
 - **Transport:** Streamable HTTP (remote, hosted — there is nothing to clone, build or run locally)
-- **Endpoint URL:** `https://api.clipia.ai/mcp`
+- **Endpoint URL:** `https://mcp.clipia.ai/mcp`
 - **Auth:** an API key sent as `Authorization: Bearer <key>`
 
 ## 2. Get the API key
@@ -26,7 +26,7 @@ Add this entry to the user's MCP settings file (for Cline: `cline_mcp_settings.j
 {
   "mcpServers": {
     "clipia": {
-      "url": "https://api.clipia.ai/mcp",
+      "url": "https://mcp.clipia.ai/mcp",
       "headers": {
         "Authorization": "Bearer clipia_test_YOUR_KEY"
       }
