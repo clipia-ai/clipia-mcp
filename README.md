@@ -1,8 +1,6 @@
-<!-- TODO founder: подтвердить имя репо/org перед публикацией (предполагается clipia-ai/clipia-mcp) -->
-
 # Clipia MCP
 
-**Generate AI images & video inside Claude, Cursor, ChatGPT — 20+ models in one MCP endpoint.**
+**Generate AI images & video inside Claude, Cursor, ChatGPT — 50+ models in one MCP endpoint.**
 
 [![npm clipia-ai](https://img.shields.io/npm/v/clipia-ai?label=npm%20clipia-ai&logo=npm)](https://www.npmjs.com/package/clipia-ai)
 [![PyPI clipia](https://img.shields.io/pypi/v/clipia?label=PyPI%20clipia&logo=pypi&logoColor=white)](https://pypi.org/project/clipia/)
@@ -21,10 +19,10 @@ Connect Clipia to Claude Code in one command (replace the placeholder with your 
 
 ```bash
 claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
-  --header "Authorization: Bearer clipia_live_YOUR_KEY"
+  --header "Authorization: Bearer <CLIPIA_API_KEY>"
 ```
 
-Then just ask in the chat: *"Generate a neon city image with Clipia"* — the preview lands right in the terminal.
+Then just ask in the chat: _"Generate a neon city image with Clipia"_ — the preview lands right in the terminal.
 
 **Where to get a key:** create one at [clipia.ai/settings](https://clipia.ai/settings) → the **API keys** tab. The key is shown once.
 
@@ -38,24 +36,24 @@ The endpoint is the same everywhere: `https://mcp.clipia.ai/mcp`. IDEs and CLIs 
 
 Ready-to-paste configs live in [`examples/`](./examples).
 
-| Client | How to connect | Auth |
-| --- | --- | --- |
-| **Claude Code** | `claude mcp add --transport http clipia …` (see Quick start) | API key |
-| **Claude Desktop** | `mcp-remote` bridge in `claude_desktop_config.json` | API key |
-| **claude.ai** (web/desktop/mobile) | Settings → Connectors → Add custom connector | OAuth |
-| **Cursor** | `~/.cursor/mcp.json` (or project `.cursor/mcp.json`) | API key |
-| **VS Code** | `.vscode/mcp.json` (`servers` + `inputs`) | API key |
-| **Cline** | `cline_mcp_settings.json` (`mcpServers`) | API key |
-| **Windsurf** | `~/.codeium/windsurf/mcp_config.json` (`serverUrl`) | API key |
-| **Codex CLI** | `~/.codex/config.toml` (`bearer_token_env_var`) | API key (env) |
-| **Gemini CLI** | `gemini mcp add --transport http clipia …` | API key |
-| **ChatGPT** | Developer mode → Apps & Connectors → Create | OAuth |
+| Client                             | How to connect                                               | Auth          |
+| ---------------------------------- | ------------------------------------------------------------ | ------------- |
+| **Claude Code**                    | `claude mcp add --transport http clipia …` (see Quick start) | API key       |
+| **Claude Desktop**                 | `mcp-remote` bridge in `claude_desktop_config.json`          | API key       |
+| **claude.ai** (web/desktop/mobile) | Settings → Connectors → Add custom connector                 | OAuth         |
+| **Cursor**                         | `~/.cursor/mcp.json` (or project `.cursor/mcp.json`)         | API key       |
+| **VS Code**                        | `.vscode/mcp.json` (`servers` + `inputs`)                    | API key       |
+| **Cline**                          | `cline_mcp_settings.json` (`mcpServers`)                     | API key       |
+| **Windsurf**                       | `~/.codeium/windsurf/mcp_config.json` (`serverUrl`)          | API key       |
+| **Codex CLI**                      | `~/.codex/config.toml` (`bearer_token_env_var`)              | API key (env) |
+| **Gemini CLI**                     | `gemini mcp add --transport http clipia …`                   | API key       |
+| **ChatGPT**                        | Developer mode → Apps & Connectors → Create                  | OAuth         |
 
 ### Claude Code
 
 ```bash
 claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
-  --header "Authorization: Bearer clipia_live_YOUR_KEY"
+  --header "Authorization: Bearer <CLIPIA_API_KEY>"
 ```
 
 ### Claude Desktop
@@ -72,7 +70,7 @@ Claude Desktop bridges to remote HTTP servers through [`mcp-remote`](https://www
         "mcp-remote",
         "https://mcp.clipia.ai/mcp",
         "--header",
-        "Authorization: Bearer clipia_live_YOUR_KEY"
+        "Authorization: Bearer <CLIPIA_API_KEY>"
       ]
     }
   }
@@ -97,7 +95,7 @@ Add to `~/.cursor/mcp.json` (global) or `.cursor/mcp.json` (project), then resta
   "mcpServers": {
     "clipia": {
       "url": "https://mcp.clipia.ai/mcp",
-      "headers": { "Authorization": "Bearer clipia_live_YOUR_KEY" }
+      "headers": { "Authorization": "Bearer <CLIPIA_API_KEY>" }
     }
   }
 }
@@ -136,7 +134,7 @@ Cline reads `mcpServers` from its `cline_mcp_settings.json` (MCP Servers → Con
   "mcpServers": {
     "clipia": {
       "url": "https://mcp.clipia.ai/mcp",
-      "headers": { "Authorization": "Bearer clipia_live_YOUR_KEY" }
+      "headers": { "Authorization": "Bearer <CLIPIA_API_KEY>" }
     }
   }
 }
@@ -153,7 +151,7 @@ Add to `~/.codeium/windsurf/mcp_config.json` (note the Windsurf-specific `server
   "mcpServers": {
     "clipia": {
       "serverUrl": "https://mcp.clipia.ai/mcp",
-      "headers": { "Authorization": "Bearer clipia_live_YOUR_KEY" }
+      "headers": { "Authorization": "Bearer <CLIPIA_API_KEY>" }
     }
   }
 }
@@ -170,14 +168,14 @@ url = "https://mcp.clipia.ai/mcp"
 bearer_token_env_var = "CLIPIA_API_KEY"
 
 # in your environment:
-# export CLIPIA_API_KEY="clipia_live_YOUR_KEY"
+# export CLIPIA_API_KEY=<CLIPIA_API_KEY>
 ```
 
 ### Gemini CLI
 
 ```bash
 gemini mcp add --transport http clipia https://mcp.clipia.ai/mcp \
-  --header "Authorization: Bearer clipia_live_YOUR_KEY"
+  --header "Authorization: Bearer <CLIPIA_API_KEY>"
 ```
 
 Verify the connection with `gemini mcp list`.
@@ -197,17 +195,17 @@ Verify the connection with `gemini mcp list`.
 
 The server exposes **8 tools to the agent** (plus one app-only helper). Compact schemas keep the agent's context window light.
 
-| Tool | What it does |
-| --- | --- |
-| `generate_image` | Generate image(s) from a text prompt, optionally with reference images (editing / image-to-image). Waits briefly and usually returns the finished image inline (URL + small preview). Cost in credits is returned. |
-| `generate_video` | Start a video generation from a text prompt (text-to-video) or from a start image (image-to-video, pass `image_url`). Returns `request_id` and cost in credits immediately — renders take 1–10 min, poll with `wait_generation`. |
-| `wait_generation` | Wait for a generation to finish (long-poll up to `wait_seconds`, then returns current status). Call repeatedly until `COMPLETED`, `FAILED` or `CANCELED`. Returns output URLs (and an inline preview) when done. |
-| `get_generation` | Get the current status/result of a generation without waiting. When `COMPLETED`, `output.images[].url` is the inline webp preview and `output.images[].original_url` is the full-quality PNG/JPG. |
-| `list_models` | List available AI models with type (image/video/audio), capabilities and base price in credits. Filter by `type` / `search`. |
-| `get_model` | Get model details: supported input parameters (`input_schema`) and base price in credits. |
-| `get_balance` | Get the credit balance of the connected Clipia account and 30-day usage of the current API key. |
-| `search_templates` | Search 3500+ curated prompt templates (hybrid text+semantic search, Russian or English query). Each result has a ready-to-use prompt and a recommended model. |
-| `app_get_generation` | *Internal / app-only:* status poll used by the Clipia generation viewer card (MCP Apps). Hidden from the model; prefer `get_generation`. |
+| Tool                 | What it does                                                                                                                                                                                                                     |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `generate_image`     | Generate image(s) from a text prompt, optionally with reference images (editing / image-to-image). Waits briefly and usually returns the finished image inline (URL + small preview). Cost in credits is returned.               |
+| `generate_video`     | Start a video generation from a text prompt (text-to-video) or from a start image (image-to-video, pass `image_url`). Returns `request_id` and cost in credits immediately — renders take 1–10 min, poll with `wait_generation`. |
+| `wait_generation`    | Wait for a generation to finish (long-poll up to `wait_seconds`, then returns current status). Call repeatedly until `COMPLETED`, `FAILED` or `CANCELED`. Returns output URLs (and an inline preview) when done.                 |
+| `get_generation`     | Get the current status/result of a generation without waiting. When `COMPLETED`, `output.images[].url` is the inline webp preview and `output.images[].original_url` is the full-quality PNG/JPG.                                |
+| `list_models`        | List available AI models with type (image/video/audio), capabilities and base price in credits. Filter by `type` / `search`.                                                                                                     |
+| `get_model`          | Get model details: supported input parameters (`input_schema`) and base price in credits.                                                                                                                                        |
+| `get_balance`        | Get the credit balance of the connected Clipia account and 30-day usage of the current API key.                                                                                                                                  |
+| `search_templates`   | Search 3500+ curated prompt templates (hybrid text+semantic search, Russian or English query). Each result has a ready-to-use prompt and a recommended model.                                                                    |
+| `app_get_generation` | _Internal / app-only:_ status poll used by the Clipia generation viewer card (MCP Apps). Hidden from the model; prefer `get_generation`.                                                                                         |
 
 **Default models** (used when no slug is passed): `nano-banana-2` for images, `seedance-2-fast-t2v` / `seedance-2-fast-i2v` for video. Override with a model slug from `list_models`.
 
@@ -216,7 +214,7 @@ The server exposes **8 tools to the agent** (plus one app-only helper). Compact 
 ## Why Clipia
 
 - **Pay from Russia & CIS** — Russian bank cards, SBP, MIR, no VPN required. Western processors reject these; Clipia is built for this market (and works internationally too).
-- **20+ flagship models, one endpoint** — Western and Chinese models side by side: Veo 3.1, Sora, Kling 3, Seedance 2, Hailuo, Wan 2.7, Nano Banana, FLUX, Midjourney V7, Imagen 4, and more. No juggling multiple foreign subscriptions.
+- **50+ flagship models, one endpoint** — Western and Chinese models side by side: Veo 3.1, Sora, Kling 3, Seedance 2, Hailuo, Wan 2.7, Nano Banana, FLUX, Midjourney V7, Imagen 4, and more. No juggling multiple foreign subscriptions.
 - **Sandbox without charges** — `clipia_test_*` keys return instant mock results with no credit spend, perfect for wiring up an integration or CI.
 - **Live preview in the chat (MCP Apps)** — on claude.ai (web/desktop/mobile) every generation renders an interactive card with live progress, the finished media and an "Original" button. In Claude Code the preview lands inline in the terminal for vision-based iteration.
 - **3500+ prompt templates** — `search_templates` gives the agent curated, ready-to-use prompts (hybrid search, RU/EN), each with a recommended model.
@@ -248,13 +246,13 @@ New accounts receive a small pack of **welcome credits** to evaluate the platfor
 
 ## 🇷🇺 Для России и СНГ
 
-Clipia — российская платформа AI-генерации изображений и видео. Главное отличие от западных сервисов: **оплата картой РФ, СБП и МИР, без VPN**. 20+ топовых западных и китайских моделей (Veo 3.1, Sora, Kling 3, Seedance 2, Nano Banana, FLUX, Midjourney V7) в одном MCP-эндпоинте, прямо из Claude, Cursor, ChatGPT.
+Clipia — российская платформа AI-генерации изображений и видео. Главное отличие от западных сервисов: **оплата картой РФ, СБП и МИР, без VPN**. 50+ топовых западных и китайских моделей (Veo 3.1, Sora, Kling 3, Seedance 2, Nano Banana, FLUX, Midjourney V7) в одном MCP-эндпоинте, прямо из Claude, Cursor, ChatGPT.
 
 Подключение в одну команду (ключ — в [Настройках → API-ключи](https://clipia.ai/settings)):
 
 ```bash
 claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
-  --header "Authorization: Bearer clipia_live_ВАШ_КЛЮЧ"
+  --header "Authorization: Bearer <CLIPIA_API_KEY>"
 ```
 
 Ключи `clipia_test_*` — песочница без списания кредитов для отладки. Биллинг в кредитах, стоимость каждой генерации возвращается в ответе. Тарифы: [clipia.ai/tariffs](https://clipia.ai/tariffs).
@@ -268,6 +266,16 @@ claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
 - **Model catalog:** [clipia.ai/models](https://clipia.ai/models)
 - **Pricing:** [clipia.ai/tariffs](https://clipia.ai/tariffs)
 - **Get an API key:** [clipia.ai/settings](https://clipia.ai/settings)
+
+---
+
+## Support & legal
+
+- **Website:** [clipia.ai](https://clipia.ai)
+- **Documentation:** [clipia.ai/docs/mcp](https://clipia.ai/docs/mcp)
+- **Privacy Policy:** [clipia.ai/privacy](https://clipia.ai/privacy)
+- **Terms:** [clipia.ai/terms](https://clipia.ai/terms)
+- **Support:** hello@clipia.ai
 
 ---
 

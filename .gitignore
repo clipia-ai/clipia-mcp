@@ -1,0 +1,9 @@
+# Local MCP configs that may contain a real API key — never commit these.
+examples/*.local.json
+*.local.json
+
+# Stray secret/key material
+*.key
+*.pem
+.env
+.env.*

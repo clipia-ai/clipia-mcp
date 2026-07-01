@@ -1,4 +1,5 @@
 {
+  "_comment": "SECURITY: replace clipia_live_YOUR_KEY with your own key. Do NOT commit a file containing a real key — save local copies as *.local.json (gitignored). Prefer a clipia_test_* sandbox key for sharing.",
   "mcpServers": {
     "clipia": {
       "serverUrl": "https://mcp.clipia.ai/mcp",

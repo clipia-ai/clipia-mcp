@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.clipia-ai/clipia-mcp",
+  "title": "Clipia",
+  "description": "Generate AI images and video from Claude, ChatGPT and Cursor via remote MCP.",
+  "websiteUrl": "https://clipia.ai",
+  "repository": {
+    "url": "https://github.com/clipia-ai/clipia-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.clipia.ai/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Clipia API key from the developer console (https://clipia.ai/settings → API keys). Format: 'Bearer clipia_...'. The endpoint also supports OAuth 2.1 (PKCE) for claude.ai and ChatGPT — no key needed there.",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
