@@ -11,7 +11,7 @@ You are an AI agent (Cline or similar) installing the **Clipia MCP server** for 
 
 ## 2. Get the API key
 
-Ask the user for their Clipia API key. If they don't have one, tell them to create it at **https://clipia.ai/settings** → the **API keys** tab (the key is shown only once).
+Ask the user for their Clipia API key. If they don't have one, tell them to create it in the Developer Console at **https://clipia.ai/en/developer** (the key is shown only once).
 
 - Live keys start with `clipia_live_` (charges credits).
 - Sandbox keys start with `clipia_test_` (instant mock results, **no credit charge**) — recommended for first-time testing.
@@ -28,7 +28,7 @@ Add this entry to the user's MCP settings file (for Cline: `cline_mcp_settings.j
     "clipia": {
       "url": "https://mcp.clipia.ai/mcp",
       "headers": {
-        "Authorization": "Bearer clipia_test_YOUR_KEY"
+        "Authorization": "Bearer ${CLIPIA_API_KEY}"
       }
     }
   }
@@ -56,10 +56,10 @@ For a live key, the same call performs a real generation and the response includ
 
 ## 6. Available tools (for reference)
 
-`generate_image`, `generate_video`, `wait_generation`, `get_generation`, `list_models`, `get_model`, `get_balance`, `search_templates`.
+The 10 core tools are `generate_image`, `generate_video`, `generate_audio`, `generate_music`, `wait_generation`, `get_generation`, `list_models`, `get_model`, `get_balance` and `search_templates`. Production currently also exposes `generate_scenario`, `compose_video` and `generate_presentation`; clients should use `tools/list` because these additional capabilities are feature-gated.
 
 Typical flow: `generate_image` / `generate_video` → if the result is non-terminal (`IN_QUEUE` / `IN_PROGRESS`), poll with `wait_generation` using the returned `request_id` until `COMPLETED`. Video takes 1–10 minutes. Never tell the user the result is ready before a tool returns `COMPLETED` with an output URL.
 
 ## 7. Done
 
-Report success to the user, mention they can manage or revoke the key at https://clipia.ai/settings, and that billing is in credits (see https://clipia.ai/tariffs).
+Report success to the user, mention they can manage or revoke the key at https://clipia.ai/en/developer, and that billing is in credits (see https://clipia.ai/en/tariffs).

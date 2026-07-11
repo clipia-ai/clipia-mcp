@@ -24,7 +24,7 @@ claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
 
 Then just ask in the chat: _"Generate a neon city image with Clipia"_ — the preview lands right in the terminal.
 
-**Where to get a key:** create one at [clipia.ai/settings](https://clipia.ai/settings) → the **API keys** tab. The key is shown once.
+**Where to get a key:** create one in the [Clipia Developer Console](https://clipia.ai/en/developer). The key is shown once.
 
 **Sandbox without charges:** keys with the `clipia_test_` prefix run in a sandbox — instant mock results, no credits spent. Use a `clipia_test_*` key to validate your integration before going live.
 
@@ -32,7 +32,7 @@ Then just ask in the chat: _"Generate a neon city image with Clipia"_ — the pr
 
 ## Connect from any client
 
-The endpoint is the same everywhere: `https://mcp.clipia.ai/mcp`. IDEs and CLIs authenticate with an API key from settings; **claude.ai** and **ChatGPT** connect by signing in to your Clipia account over OAuth (no key needed).
+The endpoint is the same everywhere: `https://mcp.clipia.ai/mcp`. IDEs and CLIs authenticate with an API key from the Developer Console; **claude.ai** and **ChatGPT** connect by signing in to your Clipia account over OAuth (no key needed).
 
 Ready-to-paste configs live in [`examples/`](./examples).
 
@@ -193,19 +193,25 @@ Verify the connection with `gemini mcp list`.
 
 ## Tools
 
-The server exposes **8 tools to the agent** (plus one app-only helper). Compact schemas keep the agent's context window light.
+The server always exposes **10 core tools to the agent**. As of 2026-07-11, production exposes **14 agent tools**: the 10 core tools plus chat, scenario planning, server-side video composition and presentation generation. A separate app-only helper is hidden from the AI agent. Compact schemas keep the agent's context window light.
 
-| Tool                 | What it does                                                                                                                                                                                                                     |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `generate_image`     | Generate image(s) from a text prompt, optionally with reference images (editing / image-to-image). Waits briefly and usually returns the finished image inline (URL + small preview). Cost in credits is returned.               |
-| `generate_video`     | Start a video generation from a text prompt (text-to-video) or from a start image (image-to-video, pass `image_url`). Returns `request_id` and cost in credits immediately — renders take 1–10 min, poll with `wait_generation`. |
-| `wait_generation`    | Wait for a generation to finish (long-poll up to `wait_seconds`, then returns current status). Call repeatedly until `COMPLETED`, `FAILED` or `CANCELED`. Returns output URLs (and an inline preview) when done.                 |
-| `get_generation`     | Get the current status/result of a generation without waiting. When `COMPLETED`, `output.images[].url` is the inline webp preview and `output.images[].original_url` is the full-quality PNG/JPG.                                |
-| `list_models`        | List available AI models with type (image/video/audio), capabilities and base price in credits. Filter by `type` / `search`.                                                                                                     |
-| `get_model`          | Get model details: supported input parameters (`input_schema`) and base price in credits.                                                                                                                                        |
-| `get_balance`        | Get the credit balance of the connected Clipia account and 30-day usage of the current API key.                                                                                                                                  |
-| `search_templates`   | Search 3500+ curated prompt templates (hybrid text+semantic search, Russian or English query). Each result has a ready-to-use prompt and a recommended model.                                                                    |
-| `app_get_generation` | _Internal / app-only:_ status poll used by the Clipia generation viewer card (MCP Apps). Hidden from the model; prefer `get_generation`.                                                                                         |
+| Tool                    | What it does                                                                                                                                                                                                                     |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `generate_image`        | Generate image(s) from a text prompt, optionally with reference images (editing / image-to-image). Waits briefly and usually returns the finished image inline (URL + small preview). Cost in credits is returned.               |
+| `generate_video`        | Start a video generation from a text prompt (text-to-video) or from a start image (image-to-video, pass `image_url`). Returns `request_id` and cost in credits immediately — renders take 1–10 min, poll with `wait_generation`. |
+| `generate_audio`        | Generate speech from text with a selected voice and language. Returns an MP3 when complete.                                                                                                                                      |
+| `generate_music`        | Generate background music or a soundtrack from a description of mood, genre and tempo.                                                                                                                                           |
+| `wait_generation`       | Wait for a generation to finish (long-poll up to `wait_seconds`, then returns current status). Call repeatedly until `COMPLETED`, `FAILED` or `CANCELED`. Returns output URLs (and an inline preview) when done.                 |
+| `get_generation`        | Get the current status/result of a generation without waiting. When `COMPLETED`, `output.images[].url` is the inline webp preview and `output.images[].original_url` is the full-quality PNG/JPG.                                |
+| `list_models`           | List available AI models with type (image/video/audio), capabilities and base price in credits. Filter by `type` / `search`.                                                                                                     |
+| `get_model`             | Get model details: supported input parameters (`input_schema`) and base price in credits.                                                                                                                                        |
+| `get_balance`           | Get the credit balance of the connected Clipia account and 30-day usage of the current API key.                                                                                                                                  |
+| `search_templates`      | Search 3500+ curated prompt templates (hybrid text+semantic search, Russian or English query). Each result has a ready-to-use prompt and a recommended model.                                                                    |
+| `chat`                  | _Currently enabled, feature-gated:_ chat with a text LLM using a prompt or messages array; returns reply text, token usage and credit cost.                                                                                      |
+| `generate_scenario`     | _Currently enabled, feature-gated:_ turn a brief into per-scene video prompts and a soundtrack prompt.                                                                                                                           |
+| `compose_video`         | _Currently enabled, feature-gated:_ stitch 2–20 completed scenes into a final MP4 with optional voiceover, soundtrack and subtitles.                                                                                             |
+| `generate_presentation` | _Currently enabled, feature-gated:_ render an editable PPTX, PDF and previews from a structured deck specification.                                                                                                              |
+| `app_get_generation`    | _Internal / app-only:_ status poll used by the Clipia generation viewer card (MCP Apps). Hidden from the model; prefer `get_generation`.                                                                                         |
 
 **Default models** (used when no slug is passed): `nano-banana-2` for images, `seedance-2-fast-t2v` / `seedance-2-fast-i2v` for video. Override with a model slug from `list_models`.
 
@@ -219,7 +225,7 @@ The server exposes **8 tools to the agent** (plus one app-only helper). Compact 
 - **Live preview in the chat (MCP Apps)** — on claude.ai (web/desktop/mobile) every generation renders an interactive card with live progress, the finished media and an "Original" button. In Claude Code the preview lands inline in the terminal for vision-based iteration.
 - **3500+ prompt templates** — `search_templates` gives the agent curated, ready-to-use prompts (hybrid search, RU/EN), each with a recommended model.
 - **Cost in every response** — every generation returns its exact cost in credits, and `get_balance` shows the remaining balance. No hidden MCP markup.
-- **Compact tool surface** — 8 tools with tight schemas keep the agent's context window light (versus 30+ tools that can eat ~12K tokens elsewhere).
+- **Compact tool surface** — 10 core tools with tight schemas keep the agent's context window light; enabled capabilities add only the tools they need.
 
 ---
 
@@ -246,9 +252,9 @@ New accounts receive a small pack of **welcome credits** to evaluate the platfor
 
 ## 🇷🇺 Для России и СНГ
 
-Clipia — российская платформа AI-генерации изображений и видео. Главное отличие от западных сервисов: **оплата картой РФ, СБП и МИР, без VPN**. 50+ топовых западных и китайских моделей (Veo 3.1, Sora, Kling 3, Seedance 2, Nano Banana, FLUX, Midjourney V7) в одном MCP-эндпоинте, прямо из Claude, Cursor, ChatGPT.
+Clipia — AI-платформа для генерации изображений и видео с русским интерфейсом и поддержкой. Для пользователей из России и СНГ доступны **оплата картой РФ, СБП и МИР, без VPN**. 50+ западных и китайских моделей (Veo 3.1, Sora, Kling 3, Seedance 2, Nano Banana, FLUX, Midjourney V7) работают через один MCP-эндпоинт прямо из Claude, Cursor и ChatGPT.
 
-Подключение в одну команду (ключ — в [Настройках → API-ключи](https://clipia.ai/settings)):
+Подключение в одну команду (ключ — в [консоли разработчика](https://clipia.ai/ru/developer)):
 
 ```bash
 claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
@@ -265,7 +271,7 @@ claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
 - **MCP landing:** [clipia.ai/mcp](https://clipia.ai/mcp)
 - **Model catalog:** [clipia.ai/models](https://clipia.ai/models)
 - **Pricing:** [clipia.ai/tariffs](https://clipia.ai/tariffs)
-- **Get an API key:** [clipia.ai/settings](https://clipia.ai/settings)
+- **Get an API key:** [clipia.ai/en/developer](https://clipia.ai/en/developer)
 
 ---
 
