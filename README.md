@@ -11,25 +11,6 @@ Clipia is an AI image & video generation platform. This is its hosted, remote **
 
 **Endpoint:** `https://mcp.clipia.ai/mcp` — stateless **Streamable HTTP**, authenticated with a Clipia API key.
 
-## Glama server runtime
-
-The repository includes a minimal Docker runtime so Glama can start the public
-server entry and inspect its MCP tool definitions. The container is a stdio
-bridge to the hosted endpoint; it does not contain the Clipia application or
-any credentials.
-
-Configure `CLIPIA_API_KEY` as a secret in Glama. Use a sandbox key with the
-`clipia_test_` prefix so validation never spends credits. The optional
-`CLIPIA_MCP_URL` setting defaults to `https://mcp.clipia.ai/mcp` and only accepts
-HTTPS URLs.
-
-```bash
-docker build -t clipia-mcp-glama .
-docker run --rm -i \
-  -e CLIPIA_API_KEY='<CLIPIA_TEST_API_KEY>' \
-  clipia-mcp-glama
-```
-
 ---
 
 ## Quick start
