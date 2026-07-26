@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.clipia-ai/clipia-mcp",
   "title": "Clipia",
-  "description": "Generate AI images, video, speech and music from Claude, ChatGPT and Cursor via remote MCP.",
+  "description": "Generate AI images, video, speech, music and presentations from Claude, ChatGPT and Cursor.",
   "websiteUrl": "https://clipia.ai",
   "repository": {
     "url": "https://github.com/clipia-ai/clipia-mcp",
@@ -19,7 +19,7 @@
       "sizes": ["any"]
     }
   ],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "remotes": [
     {
       "type": "streamable-http",

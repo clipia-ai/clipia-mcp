@@ -1,13 +1,13 @@
 # Clipia MCP
 
-**Generate AI images & video inside Claude, Cursor, ChatGPT — 50+ models in one MCP endpoint.**
+**Create AI images, video, speech, music and presentations inside Claude, Cursor and ChatGPT — 50+ models in one MCP endpoint.**
 
 [![npm clipia-ai](https://img.shields.io/npm/v/clipia-ai?label=npm%20clipia-ai&logo=npm)](https://www.npmjs.com/package/clipia-ai)
 [![PyPI clipia](https://img.shields.io/pypi/v/clipia?label=PyPI%20clipia&logo=pypi&logoColor=white)](https://pypi.org/project/clipia/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![MCP](https://img.shields.io/badge/Model%20Context%20Protocol-Streamable%20HTTP-7c5cff)](https://modelcontextprotocol.io)
 
-Clipia is an AI image & video generation platform. This is its hosted, remote **Model Context Protocol (MCP)** server: a single endpoint that lets any MCP-capable AI agent generate images and video, poll results, browse models, search prompt templates and read your credit balance — no SDK and no code required.
+Clipia is an AI creation platform. This hosted, remote **Model Context Protocol (MCP)** server lets any MCP-capable agent generate images, video, speech and music; chat with text models; plan and compose videos; create and edit presentations; poll results; browse models; search prompt templates; and read your credit balance — no SDK and no code required.
 
 **Endpoint:** `https://mcp.clipia.ai/mcp` — stateless **Streamable HTTP**, authenticated with a Clipia API key.
 
@@ -193,7 +193,7 @@ Verify the connection with `gemini mcp list`.
 
 ## Tools
 
-The server always exposes **10 core tools to the agent**. As of 2026-07-11, production exposes **14 agent tools**: the 10 core tools plus chat, scenario planning, server-side video composition and presentation generation. A separate app-only helper is hidden from the AI agent. Compact schemas keep the agent's context window light.
+The server always exposes **10 core tools to the agent**. As of 2026-07-26, production exposes **15 agent tools**: the 10 core tools plus chat, scenario planning, server-side video composition, presentation generation and presentation editing. A separate app-only helper is hidden from the AI agent. Compact schemas keep the agent's context window light.
 
 | Tool                    | What it does                                                                                                                                                                                                                     |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -211,6 +211,7 @@ The server always exposes **10 core tools to the agent**. As of 2026-07-11, prod
 | `generate_scenario`     | _Currently enabled, feature-gated:_ turn a brief into per-scene video prompts and a soundtrack prompt.                                                                                                                           |
 | `compose_video`         | _Currently enabled, feature-gated:_ stitch 2–20 completed scenes into a final MP4 with optional voiceover, soundtrack and subtitles.                                                                                             |
 | `generate_presentation` | _Currently enabled, feature-gated:_ render an editable PPTX, PDF and previews from a structured deck specification.                                                                                                              |
+| `edit_presentation`     | _Currently enabled, feature-gated:_ edit an existing deck, reorder or replace slides, change text and theme, and reuse unchanged illustrations.                                                                                  |
 | `app_get_generation`    | _Internal / app-only:_ status poll used by the Clipia generation viewer card (MCP Apps). Hidden from the model; prefer `get_generation`.                                                                                         |
 
 **Default models** (used when no slug is passed): `nano-banana-2` for images, `seedance-2-fast-t2v` / `seedance-2-fast-i2v` for video. Override with a model slug from `list_models`.
@@ -273,7 +274,7 @@ New accounts receive a small pack of **welcome credits** to evaluate the platfor
 
 ## 🇷🇺 Для России и СНГ
 
-Clipia — AI-платформа для генерации изображений и видео с русским интерфейсом и поддержкой. Для пользователей из России и СНГ доступны **оплата картой РФ, СБП и МИР, без VPN**. 50+ западных и китайских моделей (Veo 3.1, Sora, Kling 3, Seedance 2, Nano Banana, FLUX, Midjourney V7) работают через один MCP-эндпоинт прямо из Claude, Cursor и ChatGPT.
+Clipia — AI-платформа для генерации изображений, видео, речи, музыки и презентаций, а также текстовых AI-чатов и сборки готовых роликов. Для пользователей из России и СНГ доступны **оплата картой РФ, СБП и МИР, без VPN**. 50+ западных и китайских моделей (Veo 3.1, Sora, Kling 3, Seedance 2, Nano Banana, FLUX, Midjourney V7) работают через один MCP-эндпоинт прямо из Claude, Cursor и ChatGPT.
 
 Подключение в одну команду (ключ — в [консоли разработчика](https://clipia.ai/ru/developer)):
 
@@ -299,10 +300,10 @@ claude mcp add --transport http clipia https://mcp.clipia.ai/mcp \
 ## Support & legal
 
 - **Website:** [clipia.ai](https://clipia.ai)
-- **Documentation:** [clipia.ai/docs/mcp](https://clipia.ai/docs/mcp)
+- **Documentation:** [clipia.ai/en/docs/mcp](https://clipia.ai/en/docs/mcp)
 - **Privacy Policy:** [clipia.ai/privacy](https://clipia.ai/privacy)
 - **Terms:** [clipia.ai/terms](https://clipia.ai/terms)
-- **Support:** hello@clipia.ai
+- **Support:** support@clipia.ai
 
 ---
 

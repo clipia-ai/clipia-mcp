@@ -1,6 +1,6 @@
 # Installing Clipia MCP (instructions for an AI agent)
 
-You are an AI agent (Cline or similar) installing the **Clipia MCP server** for the user. Clipia generates AI images and video. Follow these steps exactly.
+You are an AI agent (Cline or similar) installing the **Clipia MCP server** for the user. Clipia generates AI images, video, speech, music and presentations; it also supports text chat and server-side video composition. Follow these steps exactly.
 
 ## 1. What you are connecting
 
@@ -56,7 +56,7 @@ For a live key, the same call performs a real generation and the response includ
 
 ## 6. Available tools (for reference)
 
-The 10 core tools are `generate_image`, `generate_video`, `generate_audio`, `generate_music`, `wait_generation`, `get_generation`, `list_models`, `get_model`, `get_balance` and `search_templates`. Production currently also exposes `generate_scenario`, `compose_video` and `generate_presentation`; clients should use `tools/list` because these additional capabilities are feature-gated.
+The 10 core tools are `generate_image`, `generate_video`, `generate_audio`, `generate_music`, `wait_generation`, `get_generation`, `list_models`, `get_model`, `get_balance` and `search_templates`. Production currently also exposes `chat`, `generate_scenario`, `compose_video`, `generate_presentation` and `edit_presentation`; clients should use `tools/list` because these additional capabilities are feature-gated.
 
 Typical flow: `generate_image` / `generate_video` → if the result is non-terminal (`IN_QUEUE` / `IN_PROGRESS`), poll with `wait_generation` using the returned `request_id` until `COMPLETED`. Video takes 1–10 minutes. Never tell the user the result is ready before a tool returns `COMPLETED` with an output URL.
 

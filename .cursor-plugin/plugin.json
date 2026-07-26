@@ -1,0 +1,23 @@
+{
+  "name": "clipia-mcp",
+  "version": "1.0.2",
+  "description": "Create AI images, video, speech, music and presentations from Cursor through Clipia's hosted MCP server.",
+  "author": {
+    "name": "Clipia",
+    "email": "support@clipia.ai"
+  },
+  "homepage": "https://clipia.ai/en/docs/mcp",
+  "repository": "https://github.com/clipia-ai/clipia-mcp",
+  "license": "MIT",
+  "logo": "https://clipia.ai/icon.png",
+  "keywords": [
+    "mcp",
+    "cursor",
+    "image-generation",
+    "video-generation",
+    "speech-generation",
+    "music-generation",
+    "presentation-generation"
+  ],
+  "mcpServers": "./.mcp.json"
+}
