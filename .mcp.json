@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "clipia": {
-      "type": "http",
-      "url": "https://mcp.clipia.ai/mcp"
-    }
-  }
-}
