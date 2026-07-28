@@ -1,6 +1,6 @@
 # Clipia MCP
 
-**Create AI images, video, speech, music and presentations inside Claude, Cursor and ChatGPT — 50+ models in one MCP endpoint.**
+**Create AI images, video, speech, music and presentations inside Claude, Cursor and ChatGPT — 60+ models in one MCP endpoint.**
 
 [![npm clipia-ai](https://img.shields.io/npm/v/clipia-ai?label=npm%20clipia-ai&logo=npm)](https://www.npmjs.com/package/clipia-ai)
 [![PyPI clipia](https://img.shields.io/pypi/v/clipia?label=PyPI%20clipia&logo=pypi&logoColor=white)](https://pypi.org/project/clipia/)
@@ -221,7 +221,7 @@ The server always exposes **10 core tools to the agent**. As of 2026-07-26, prod
 ## Why Clipia
 
 - **Pay from Russia & CIS** — Russian bank cards, SBP, MIR, no VPN required. Western processors reject these; Clipia is built for this market (and works internationally too).
-- **50+ flagship models, one endpoint** — Western and Chinese models side by side: Veo 3.1, Sora, Kling 3, Seedance 2, Hailuo, Wan 2.7, Nano Banana, FLUX, Midjourney V7, Imagen 4, and more. No juggling multiple foreign subscriptions.
+- **60+ flagship models, one endpoint** — Western and Chinese models side by side: Veo 3.1, Sora, Kling 3, Seedance 2, Hailuo, Wan 2.7, Nano Banana, FLUX, Midjourney V7, Imagen 4, and more. No juggling multiple foreign subscriptions.
 - **Sandbox without charges** — `clipia_test_*` keys return instant mock results with no credit spend, perfect for wiring up an integration or CI.
 - **Live preview in the chat (MCP Apps)** — on claude.ai (web/desktop/mobile) every generation renders an interactive card with live progress, the finished media and an "Original" button. In Claude Code the preview lands inline in the terminal for vision-based iteration.
 - **3500+ prompt templates** — `search_templates` gives the agent curated, ready-to-use prompts (hybrid search, RU/EN), each with a recommended model.
@@ -274,7 +274,7 @@ New accounts receive a small pack of **welcome credits** to evaluate the platfor
 
 ## 🇷🇺 Для России и СНГ
 
-Clipia — AI-платформа для генерации изображений, видео, речи, музыки и презентаций, а также текстовых AI-чатов и сборки готовых роликов. Для пользователей из России и СНГ доступны **оплата картой РФ, СБП и МИР, без VPN**. 50+ западных и китайских моделей (Veo 3.1, Sora, Kling 3, Seedance 2, Nano Banana, FLUX, Midjourney V7) работают через один MCP-эндпоинт прямо из Claude, Cursor и ChatGPT.
+Clipia — AI-платформа для генерации изображений, видео, речи, музыки и презентаций, а также текстовых AI-чатов и сборки готовых роликов. Для пользователей из России и СНГ доступны **оплата картой РФ, СБП и МИР, без VPN**. 60+ западных и китайских моделей (Veo 3.1, Sora, Kling 3, Seedance 2, Nano Banana, FLUX, Midjourney V7) работают через один MCP-эндпоинт прямо из Claude, Cursor и ChatGPT.
 
 Подключение в одну команду (ключ — в [консоли разработчика](https://clipia.ai/ru/developer)):
 
