@@ -6,7 +6,6 @@
 [![PyPI clipia](https://img.shields.io/pypi/v/clipia?label=PyPI%20clipia&logo=pypi&logoColor=white)](https://pypi.org/project/clipia/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![MCP](https://img.shields.io/badge/Model%20Context%20Protocol-Streamable%20HTTP-7c5cff)](https://modelcontextprotocol.io)
-[![smithery badge](https://smithery.ai/badge/clipia-ai/clipia-mcp)](https://smithery.ai/servers/clipia-ai/clipia-mcp)
 
 Clipia is an AI creation platform. This hosted, remote **Model Context Protocol (MCP)** server lets any MCP-capable agent generate images, video, speech and music; chat with text models; plan and compose videos; create and edit presentations; poll results; browse models; search prompt templates; and read your credit balance — no SDK and no code required.
 
@@ -194,7 +193,7 @@ Verify the connection with `gemini mcp list`.
 
 ## Tools
 
-The server always exposes **10 core tools to the agent**. As of 2026-07-26, production exposes **15 agent tools**: the 10 core tools plus chat, scenario planning, server-side video composition, presentation generation and presentation editing. A separate app-only helper is hidden from the AI agent. Compact schemas keep the agent's context window light.
+The server always exposes **10 core tools to the agent**. As of 2026-07-26, production exposes **15 agent tools**: the 10 core tools plus chat, scenario planning, server-side video composition, presentation generation and presentation editing. Seven app-only helpers are hidden from the AI agent. Compact schemas keep the agent's context window light.
 
 | Tool                    | What it does                                                                                                                                                                                                                     |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
