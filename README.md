@@ -6,6 +6,7 @@
 [![PyPI clipia](https://img.shields.io/pypi/v/clipia?label=PyPI%20clipia&logo=pypi&logoColor=white)](https://pypi.org/project/clipia/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![MCP](https://img.shields.io/badge/Model%20Context%20Protocol-Streamable%20HTTP-7c5cff)](https://modelcontextprotocol.io)
+[![smithery badge](https://smithery.ai/badge/clipia-ai/clipia-mcp)](https://smithery.ai/servers/clipia-ai/clipia-mcp)
 
 Clipia is an AI creation platform. This hosted, remote **Model Context Protocol (MCP)** server lets any MCP-capable agent generate images, video, speech and music; chat with text models; plan and compose videos; create and edit presentations; poll results; browse models; search prompt templates; and read your credit balance — no SDK and no code required.
 
