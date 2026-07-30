@@ -1,6 +1,6 @@
 {
   "name": "clipia-mcp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Create AI images, video, speech, music and presentations from Cursor through Clipia's hosted MCP server.",
   "author": {
     "name": "Clipia",
