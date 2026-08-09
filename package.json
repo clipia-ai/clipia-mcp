@@ -1,6 +1,6 @@
 {
   "name": "clipia-mcp-glama-proxy",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "Containerized stdio bridge for Glama to inspect the hosted Clipia MCP server.",
   "license": "MIT",
