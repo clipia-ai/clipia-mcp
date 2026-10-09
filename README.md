@@ -232,7 +232,7 @@ The server always exposes **10 core tools to the agent**. As of 2026-07-26, prod
 
 ## SDK
 
-Prefer calling Clipia from your own code instead of an agent? Use the official SDKs against the same public API (fal.ai-style `submit → status → result` queue, credits-based billing):
+Prefer calling Clipia from your own code instead of an agent? Use the official SDKs against the same public API (async `submit → status → result` queue, credits-based billing):
 
 - **TypeScript / Node:** [`clipia-ai`](https://www.npmjs.com/package/clipia-ai) — `npm install clipia-ai` (also ships a `clipia` CLI).
 - **Python:** [`clipia`](https://pypi.org/project/clipia/) — `pip install clipia` (sync + async clients).
