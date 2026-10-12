@@ -216,6 +216,8 @@ The server always exposes **10 core tools to the agent**. As of 2026-07-26, prod
 
 **Default models** (used when no slug is passed): `nano-banana-2` for images, `seedance-2-fast-t2v` / `seedance-2-fast-i2v` for video. Override with a model slug from `list_models`.
 
+**Parameters the model does not know.** `generate_image`, `generate_video`, `generate_audio` and `generate_music` reject a call before the generation starts when `input` or a top-level argument carries a misspelled name, or a parameter the chosen model is known not to apply (for example `seed` on a model that does not declare it). The `invalid_request` error names the rejected parameters and lists the ones the model declares — check them with `get_model` and retry. Nothing is generated or reserved for a rejected call.
+
 ---
 
 ## Why Clipia
