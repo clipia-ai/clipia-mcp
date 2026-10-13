@@ -42,7 +42,7 @@ If the host requires an explicit transport type, set `"type": "http"`. The host 
 After saving the settings, confirm the server is reachable:
 
 1. Reload / refresh the MCP server list so the host re-reads the config.
-2. Call the `list_models` tool (no arguments needed). A successful response returns available text, image, video and audio models with their credit prices — this proves auth works. Use `type: "text"` to discover slugs accepted by `chat`.
+2. Call the `list_models` tool (no arguments needed). A successful response returns the first page of the catalog (text, image, video and audio models with their credit prices) plus `total` and `truncated` — this proves auth works. When `truncated` is `true`, pass `offset: next_offset` or filter by `type` to see the rest. Use `type: "text"` to discover slugs accepted by `chat`.
 3. Optionally call `get_balance` to confirm the connected account and remaining credits.
 
 ## 5. Smoke-test a generation (sandbox)
